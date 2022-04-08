@@ -15,9 +15,10 @@ function iniciaJogo() {
         </article>`
     }
 
-
-
-
 }
 
-iniciaJogo();
+function girarCarta(){
+    const carta = document.querySelector(".carta");
+    carta.classList.toggle("flip");
+}
+// iniciaJogo();

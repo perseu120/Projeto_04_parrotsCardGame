@@ -18,11 +18,16 @@ main{
     font-size: 56px;
     line-height: 66px;
     letter-spacing: -0.004em;
-
     color: #75B79E;
 }
 
-article{
+#cart{
+    transform-style: preserve-3d;
+}
+
+.fundo{
+
+    position: absolute;
     width: 117px;
     height: 146px;
     display: flex;
@@ -33,13 +38,33 @@ article{
     box-sizing: border-box;
     border-radius: 5px;
     margin: 20px;
-
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
-article > img{
+.fundo > img{
     width: 100px;
     height: 100px;
     
+}
+
+.frente{
+    position: absolute;
+    width: 117px;
+    height: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 20px;
+    backface-visibility: hidden;
+}
+
+.flip{
+    transform: rotateY(180deg);
 }
 
 .container{
