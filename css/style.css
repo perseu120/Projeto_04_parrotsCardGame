@@ -3,7 +3,7 @@ main{
     width: 100%;
     min-height: 600px;
     height: 100%;
-    background: #EEF9BF;
+    background: rgb(42, 42, 51);
 
 }
 
@@ -21,24 +21,39 @@ main{
     color: #75B79E;
 }
 
-#cart{
+.carta{
+    display: flex;
+    justify-content: center;
     transform-style: preserve-3d;
+    transition: all 500ms linear;
+  
 }
 
-.fundo{
-
-    position: absolute;
+.cartaLayout{
+    
     width: 117px;
     height: 146px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #A7E9AF;
-    border: 1px solid #99CEA8;
     box-sizing: border-box;
     border-radius: 5px;
     margin: 20px;
+
+}
+
+.frente{
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #99CEA8;
+    backface-visibility: hidden;
     transform: rotateY(180deg);
+}
+
+.fundo{
+ 
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
     backface-visibility: hidden;
 }
 
@@ -46,21 +61,6 @@ main{
     width: 100px;
     height: 100px;
     
-}
-
-.frente{
-    position: absolute;
-    width: 117px;
-    height: 146px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border: 1px solid #99CEA8;
-    box-sizing: border-box;
-    border-radius: 5px;
-    margin: 20px;
-    backface-visibility: hidden;
 }
 
 .flip{
