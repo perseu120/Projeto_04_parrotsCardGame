@@ -1,7 +1,10 @@
 let qtnCartas;
+let contador = 0;
 
-const vetorCartas = ["img/bobrossparrot.gif", "img/bobrossparrot.gif", "img/explodyparrot.gif", "img/explodyparrot.gif","img/fiestaparrot.gif", "img/fiestaparrot.gif", "img/metalparrot.gif", "img/metalparrot.gif", "img/revertitparrot.gif", "img/revertitparrot.gif", "img/tripletsparrot.gif", "img/tripletsparrot.gif", "img/unicornparrot.gif", "img/unicornparrot.gif" ];
+const vetorCartas = ["bobrossparrot", "bobrossparrot", "explodyparrot", "explodyparrot","fiestaparrot", "fiestaparrot", "metalparrot", "metalparrot", "revertitparrot", "revertitparrot", "tripletsparrot", "tripletsparrot", "unicornparrot", "unicornparrot" ];
 const vetorEmbaralhado = [];
+const vetorCartaClicada = ['0'];
+
 function iniciaJogo() {
     do {
         qtnCartas = prompt("Escolha quantidade de cartas entre 4 e 14");
@@ -14,10 +17,15 @@ function iniciaJogo() {
 
         vetorEmbaralhado.push(vetorCartas[i]);
 
+    }
+    vetorEmbaralhado.sort(comparador);
+
+    for(let i = 0; i< vetorEmbaralhado.length; i++){
+        
         lista.innerHTML += `<div class="carta" onclick=" girarCarta(this)">
 
             <div class = "frente cartaLayout" >
-                <img src="../${vetorEmbaralhado[i]}" alt="">
+                <img src="../img/${vetorEmbaralhado[i]}.gif" alt="">
             </div>
             <div class="fundo cartaLayout">
                 <img src="img/front.png" alt="">
@@ -28,8 +36,45 @@ function iniciaJogo() {
 
 }
 
+function comparador() { 
+	return Math.random() - 0.5; 
+}
+
 function girarCarta(element){
     const carta = element;
+    contador ++;
+    
     carta.classList.toggle("flip");
+   
+
+    if(vetorCartaClicada[0] === '0'){
+        vetorCartaClicada[0] = carta.querySelector(".frente");
+
+    }else if(vetorCartaClicada[0].querySelector("img").getAttribute('src') === carta.querySelector(".frente").querySelector("img").getAttribute('src') ){
+        vetorCartaClicada[0] = '0';
+        if(document.querySelectorAll(".flip").length === Number(qtnCartas)){
+            alert(`Fim de Jogo PARABÊNS você venceu em ${contador} Jogadas`)
+        }
+        
+    }else{
+        setTimeout( ()=>{
+
+            vetorCartaClicada[0].parentNode.classList.remove("flip");
+            carta.classList.remove("flip");
+            vetorCartaClicada[0] = '0';
+        } , 1000) 
+       
+    }
+    
 }
+// setTimeout( fimDeJogo, 3000);
+
+// function fimDeJogo(){
+    
+
+//     if(document.querySelectorAll(".flip").length === Number(qtnCartas)){
+//         alert(`Fim de Jogo PARABÊNS você venceu em ${contador} Jogadas`)
+//     }
+// }
+
 iniciaJogo();
