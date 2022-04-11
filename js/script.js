@@ -1,11 +1,17 @@
 let qtnCartas;
 let contador = 0;
+let idInterval;
+let minuto ;
+let segundo ;
 
 const vetorCartas = ["bobrossparrot", "bobrossparrot", "explodyparrot", "explodyparrot","fiestaparrot", "fiestaparrot", "metalparrot", "metalparrot", "revertitparrot", "revertitparrot", "tripletsparrot", "tripletsparrot", "unicornparrot", "unicornparrot" ];
 const vetorEmbaralhado = [];
 const vetorCartaClicada = ['0'];
 
 function iniciaJogo() {
+
+    minuto = 0;
+    segundo = 0;
     do {
         qtnCartas = prompt("Escolha quantidade de cartas entre 4 e 14");
     } while ((qtnCartas < 4 || qtnCartas > 14 ) || qtnCartas % 2 === 1 );
@@ -33,6 +39,7 @@ function iniciaJogo() {
 
         </div>`
     }
+    contadorTime()
 
 }
 
@@ -52,9 +59,7 @@ function girarCarta(element){
 
     }else if(vetorCartaClicada[0].querySelector("img").getAttribute('src') === carta.querySelector(".frente").querySelector("img").getAttribute('src') ){
         vetorCartaClicada[0] = '0';
-        if(document.querySelectorAll(".flip").length === Number(qtnCartas)){
-            alert(`Fim de Jogo PARABÊNS você venceu em ${contador} Jogadas`)
-        }
+        fimDeJogo();
         
     }else{
         setTimeout( ()=>{
@@ -69,12 +74,42 @@ function girarCarta(element){
 }
 // setTimeout( fimDeJogo, 3000);
 
-// function fimDeJogo(){
+function fimDeJogo(){
     
 
-//     if(document.querySelectorAll(".flip").length === Number(qtnCartas)){
-//         alert(`Fim de Jogo PARABÊNS você venceu em ${contador} Jogadas`)
-//     }
-// }
+    if(document.querySelectorAll(".flip").length === Number(qtnCartas)){
+        clearInterval(idInterval);
+        alert(`Fim de Jogo PARABÊNS você venceu em ${contador} Jogadas e gastou ${minuto}min e ${segundo}s`)
+        
+        let resposta = prompt("deseja jogar novamente?");
+
+        if(resposta == 'sim' ){
+            document.location.reload(true);
+        }
+
+    }
+
+    
+}
+
+function contadorTime(){
+    
+    
+
+    idInterval =  setInterval(() => {
+        segundo ++;
+
+        if(segundo === 60){
+            minuto++;
+            document.querySelector(".relogio").querySelector(".min").innerHTML= minuto;
+            segundo = 0;
+        }
+        document.querySelector(".relogio").querySelector(".seg").innerHTML = segundo;
+
+
+    }, 1000);
+
+
+}
 
 iniciaJogo();

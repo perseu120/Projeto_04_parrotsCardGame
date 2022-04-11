@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Orbitron:wght@400;500;700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+
 main{
 
     width: 100%;
@@ -74,6 +77,24 @@ main{
     flex-wrap: wrap;
     margin: 4% 10%;
 
+}
+
+.relogio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 40px;
+    border-radius: 12px;
+    border: solid 1px #99CEA8;
+    position: fixed;
+    color: #75B79E;
+    box-sizing: border-box;
+    right: 100px;
+    bottom: 540px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700px;
+    font-size: xx-large;
 }
 
 @media (max-width: 614px){
